@@ -1,9 +1,9 @@
-FROM python:3.10-alpine3.16
+FROM python:3.11-alpine
 
 WORKDIR /usr/src
 
 RUN apk add --no-cache smartmontools \
-    && pip install prometheus_client \
+    && pip install prometheus_client -- \
     # remove temporary files
     && rm -rf /root/.cache/ \
     && find / -name '*.pyc' -delete
